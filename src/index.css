@@ -11,3 +11,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.custom-video::-webkit-media-controls-enclosure {
+  overflow: hidden;
+}
+
+.custom-video::-webkit-media-controls-playback-rate-button {
+  display: none !important;
+}
+
+.custom-video::-webkit-media-controls-timeline {
+  width: calc(100% + 30px);
+  margin-left: -15px;
+}
+
+
+/* src/index.css or another CSS file */
+.custom-video-wrapper {
+  position: relative;
+}
+
+.custom-video-wrapper .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.custom-video-wrapper .play-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.custom-video-wrapper .play-button:hover {
+  background: #0056b3;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
