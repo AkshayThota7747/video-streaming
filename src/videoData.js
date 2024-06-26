@@ -39,5 +39,18 @@ export const videoData = [
     videoUrl:
       "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
   },
+  {
+    id: 4,
+    title: "Big Buck Bunny2",
+    match: "90% Match",
+    rating: "U/A 13+",
+    duration: "10m",
+    quality: "HD",
+    genres: ["Comedy", "Animation"],
+    thumbnail:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+  },
   // Add more video data here...
 ];
