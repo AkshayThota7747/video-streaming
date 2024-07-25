@@ -1,5 +1,17 @@
 import axios from "axios";
 
+// Function to generate a unique identifier
+function generateUUID() {
+  return "xxxx-xxxx-4xxx-yxxx-xxxx-yyyy-yyyy-yyyy".replace(
+    /[xy]/g,
+    function (c) {
+      const r = (Math.random() * 16) | 0,
+        v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    }
+  );
+}
+
 // Function to get the user's IP address from ipify
 async function getIPAddress() {
   try {
@@ -11,18 +23,20 @@ async function getIPAddress() {
   }
 }
 
-// Function to check and set IP address in localStorage
+// Function to check and set IP address and UUID in localStorage
 async function checkAndSetIP() {
-  let ip = localStorage.getItem("ip");
+  let uniqueId = localStorage.getItem("userIdForKV");
 
-  if (!ip) {
-    ip = await getIPAddress();
+  if (!uniqueId) {
+    const ip = await getIPAddress();
+    const uuid = generateUUID();
     if (ip) {
-      localStorage.setItem("ip", ip);
+      uniqueId = `${ip}-${uuid}`;
+      localStorage.setItem("userIdForKV", uniqueId);
     }
   }
 
-  return ip;
+  return uniqueId;
 }
 
 export { checkAndSetIP };

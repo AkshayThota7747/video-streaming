@@ -5,19 +5,22 @@ import VideoPlayer from "./VideoPlayer";
 import { checkAndSetIP } from "./utility";
 
 const App = () => {
-  const [ip, setIP] = useState(null);
+  const [userIdentifier, setUserIdentifier] = useState(null);
 
   useEffect(() => {
-    async function fetchIP() {
-      const ipAddress = await checkAndSetIP();
-      setIP(ipAddress);
+    async function fetchUserIdentifier() {
+      const uniqueId = await checkAndSetIP();
+      setUserIdentifier(uniqueId);
     }
 
-    fetchIP();
+    fetchUserIdentifier();
   }, []);
 
+  const basename =
+    process.env.NODE_ENV === "production" ? "/video-streaming" : "/";
+
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         <Route path="/" element={<VideoList />} />
         <Route path="/video/:id" element={<VideoPlayer />} />
